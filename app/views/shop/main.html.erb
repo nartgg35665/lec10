@@ -1,0 +1,44 @@
+
+    <table class="table">
+      <tr class="table-primary">
+        <th ></th>
+        <th >Name</th>
+        <th >Price</th>
+           <th>Stock</th>
+        <%if session[:logged_in]%>
+        <th ></th>
+        <% end %>
+      </tr >
+      <% i = 1 %>
+      <% for data in @db %>
+      <% if data.stock!=0%>
+        <tr class="table-info">
+          <td ><%= i %></td>
+          <td ><%= data.name %></td>
+          <td ><%= data.price %></td>
+          <td ><%= data.stock %></td>
+           <%if session[:logged_in]%>
+      <%= form_with url:'/shop/checkitem', data: {turbo:false} , method: :post do |form| %>
+          <td ><%= form.submit "buy", name:"edit#{i}",class: "btn btn-secondary" %></td>
+          <%= form.hidden_field :id ,value: params[:id]%>
+          <%= form.hidden_field :data_id ,value: data.id%>
+          <%= form.hidden_field :data_price ,value: data.price%>
+          <%end%>
+        <%end%>
+          <% i+=1 %>
+        </tr>
+      <% end %>
+      <% end%>
+    </table>
+     <%= form_with url:'/main/inventories', data: {turbo:false} do |form| %>
+    <%if session[:logged_in]%>
+      <%= form.submit "Go To Inventory" ,class: "btn btn-secondary mt-1"%>
+  <%end%>
+   
+      <%end%>
+       <%= form_with url:'/main/user_items', data: {turbo:false} do |form| %>
+    <%if session[:logged_in]%>
+      <%= form.submit "Go To User_Item" ,class: "btn btn-secondary mt-1"%>
+  <%end%>
+   
+      <%end%>

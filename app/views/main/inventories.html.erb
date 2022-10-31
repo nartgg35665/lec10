@@ -1,0 +1,25 @@
+
+    <table class="table">
+      <tr class="table-primary">
+        <th ></th>
+        <th >Name</th>
+        <th >Price</th>
+        <th>From User</th>
+      </tr >
+      <% i = 1 %>
+      <% for data in @db %>
+        <tr class="table-info">
+          <td ><%= i %></td>
+          <td ><%= data[0]%></td>
+          <td ><%= data[1] %></td>
+          <td ><%= "User Id:#{data[2]}  Name:#{data[3]}" %></td>
+          <% i+=1 %>
+        </tr>
+      <% end %>
+    </table>
+    <%= form_with url:'/main/user_items', data: {turbo:false} do |form| %>
+    <%if session[:logged_in]%>
+      <%= form.submit "Go To User_Items" ,class: "btn btn-secondary mt-1"%>
+  <%end%>
+   
+      <%end%>

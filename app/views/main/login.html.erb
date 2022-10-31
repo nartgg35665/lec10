@@ -1,0 +1,11 @@
+<%="Main#login"%>
+<%= form_with url: '/main/create',data: {turbo: false} do |form| %>
+  <%= form.label :login, class: "form-label"%>
+  <%=form.text_field :login, class: "form-control"%>
+   <br/>
+  <%= form.label :password, class: "form-label"%>
+  <%=form.password_field :password , class: "form-control"%>
+ <br/>
+ 
+  <%=form.submit :OK,class: "btn btn-secondary"%>
+<% end %>
