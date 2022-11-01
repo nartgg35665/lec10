@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post 'main/update'
   post 'main/delete'
   post 'main/inventories'
+  get 'items/new_item'
   resources :items
   resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

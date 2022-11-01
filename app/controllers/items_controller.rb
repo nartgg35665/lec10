@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
 
   # GET /items/new
   def new
-    @item = Item.new
+   @item = Item.new
     session[:edit]=true
   end
 
@@ -61,7 +61,10 @@ class ItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  def newitem
+     @item = Item.new
+    session[:edit]=true
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
